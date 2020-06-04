@@ -1,29 +1,4 @@
---------------
-| Program.vb |
---------------
-
-Imports System
-Imports Microsoft.AspNetCore.Hosting
-Imports Microsoft.Extensions.Hosting
-
-Module Program
-
-    Sub Main(args As String())
-        CreateHostBuilder(args).Build().Run()
-    End Sub
-
-    Public Function CreateHostBuilder(args() As String) As IHostBuilder
-        Return Host.CreateDefaultBuilder(args).
-                ConfigureWebHostDefaults(Sub(webBuilder) webBuilder.UseStartup(Of Startup)())
-    End Function
-
-End Module
-
---------------
-| Startup.vb |
---------------
-
-Imports Microsoft.AspNetCore.Builder
+﻿Imports Microsoft.AspNetCore.Builder
 Imports Microsoft.AspNetCore.Hosting
 Imports Microsoft.Extensions.Configuration
 Imports Microsoft.Extensions.DependencyInjection
@@ -53,20 +28,4 @@ Public Class Startup
 
         app.UseEndpoints(Sub(endpoints) endpoints.MapControllers())
     End Sub
-End Class
-
-------------------
-| un controlleur |
-------------------
-
-Imports Microsoft.AspNetCore.Mvc
-
-<Route("[controller]")>
-Public Class Accueil
-    Inherits ControllerBase
-
-    Public Function Index() As String
-        Return "Bienvenue"
-    End Function
-
 End Class
